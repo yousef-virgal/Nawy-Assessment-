@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  backend:
+    depends_on:
+      - database
+    build: 
+      dockerfile: Dockerfile
+      context: ./Backend/
+      target: base
+    env_file:
+      - ./Backend/src/config/.env
+    expose:
+      - 4000
+    ports:
+      - "4000:4000"
+    command: "npm run dev"
+    volumes:
+      - ./Backend/src:/home/node/app/src
+      - ./Backend/nodemon.json:/home/node/app/nodemon.json
+
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
+  
