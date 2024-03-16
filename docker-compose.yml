@@ -10,8 +10,22 @@ services:
     expose:
       - 4000
     ports:
-      -"4000:4000"
+      - "4000:4000"
     command: "node build/index.js"
+  frontend:
+    depends_on:
+      - backend
+    build: 
+      dockerfile: Dockerfile
+      context: ./frontend/ 
+      target: prod
+    env_file:
+      - ./frontend/.env.local
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    command: "npm run start"
   database:
     image: mongo
     ports:

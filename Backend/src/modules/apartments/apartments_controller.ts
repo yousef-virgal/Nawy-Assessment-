@@ -22,7 +22,7 @@ export const fetchApartmentDetails = async (req: Request, res: Response) => {
 export const createApartment = async (req: Request, res: Response) => {
     const {apartmentType, location, size, numberOfBathrooms,
         numberOfBedrooms, price, amenities, downPayment, deliveryDate,
-        instalmentPerMonth, description } = req.body;
+        instalmentPerMonth, description, logos } = req.body;
     
     if (!isValidApartmentType(apartmentType))
         return res.status(400).send("Apartment type is invalid");
@@ -56,6 +56,7 @@ export const createApartment = async (req: Request, res: Response) => {
         number_of_bedrooms: numberOfBedrooms,
         price: price,
         size: size,
+        logos: logos
     });
 
     await apartemnt.save();

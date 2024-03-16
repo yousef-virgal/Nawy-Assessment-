@@ -17,7 +17,20 @@ services:
     volumes:
       - ./Backend/src:/home/node/app/src
       - ./Backend/nodemon.json:/home/node/app/nodemon.json
-
+  frontend:
+    depends_on:
+      - backend
+    build: 
+      dockerfile: Dockerfile
+      context: ./frontend/ 
+      target: base
+    env_file:
+      - ./frontend/.env.local
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    command: "npm run dev"
   database:
     image: mongo
     ports:

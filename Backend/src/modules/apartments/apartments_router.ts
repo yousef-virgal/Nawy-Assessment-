@@ -8,7 +8,7 @@ const apartmentsRouter = Router();
 
 apartmentsRouter.route("/").get(fetchApartments).post(requireBodyParams(
     ["apartmentType", "location", "size", "numberOfBathrooms", "numberOfBedrooms", "price", "amenities",
-     "downPayment", "deliveryDate", "instalmentPerMonth", "description"]), createApartment);
+     "downPayment", "deliveryDate", "instalmentPerMonth", "description", "logos"]), createApartment);
 apartmentsRouter.route("/:id").get(requireIdParam, fetchApartmentDetails);
 
 

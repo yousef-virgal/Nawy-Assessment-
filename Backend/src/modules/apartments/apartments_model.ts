@@ -18,6 +18,7 @@ export interface ApartmentInterface {
     delivery_date: Date;
     instalment_per_month: number;
     description: string;
+    logos: string;
 };
 
 export interface ApartmentDocInterface extends ApartmentInterface, Document {};
@@ -70,6 +71,10 @@ const apartmentSchema = new Schema({
     description: {
         type: String,
         required: false
+    },
+    logos: {
+        type: String,
+        required: true
     }
 });
 
