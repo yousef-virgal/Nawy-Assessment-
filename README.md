@@ -4,7 +4,7 @@
 
 - Make sure that docker is installed and that the docker engine is running
 - Navigate to the root dirctory
-- Run `docker compose --build`
+- Run `docker compose up --build`
 - Go to http://localhost:3000/ to view the frontend
 - And you can make requests to http://localhost:4000/ to the backend to create new apartments
 
